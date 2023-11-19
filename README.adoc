@@ -1,6 +1,8 @@
 = Generic NodeJS DevContainer
 :source-highlighter: coderay
 
+== With docusaurus
+Docusaurus https://docusaurus.io/docs#fast-track[Fast Track]
 == TL;DR
 Container based nodeJS development. Ships with https://www.postgresql.org[postgreSQL DB] and https://github.com/wodby/adminer[adminer].
 VSC setup contains some plugins and settings in link:./.devcontainer/devcontainer.json[devcontainer.json]
