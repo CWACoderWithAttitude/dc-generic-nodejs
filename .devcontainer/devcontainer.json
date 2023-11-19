@@ -1,0 +1,41 @@
+{
+  "name": "dc-generic-nodejs",
+  "dockerComposeFile": [
+    "docker-compose.yml"
+  ],
+  // https://github.com/devcontainers/features/tree/main/src/git
+  // https://github.com/devcontainers/features/tree/main/src/java#options
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+  },
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.tabSize": 3,
+        "git.rebaseWhenSync": true,
+        "remote.restoreForwardedPorts": false,
+        "remote.autoForwardPorts": false,
+        "typescript.preferences.quoteStyle": "single"
+      },
+      "extensions": [
+		"streetsidesoftware.code-spell-checker",
+		"wesbos.theme-cobalt2",
+		"vscjava.vscode-java-pack",
+		"shd101wyy.markdown-preview-enhanced",
+		"anweber.httpbook",
+		"humao.rest-client",
+		"asciidoctor.asciidoctor-vscode",
+		"ms-azuretools.vscode-docker",
+		"DotJoshJohnson.xml",
+		"redhat.vscode-yaml",
+		"afractal.node-essentials"
+	]
+    }
+  },
+  "service": "dc-generic-nodejs",
+  "workspaceFolder": "/src",
+  "remoteUser": "root",
+  "shutdownAction": "stopCompose"
+}

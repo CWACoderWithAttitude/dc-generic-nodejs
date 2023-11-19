@@ -1,0 +1,28 @@
+= Generic NodeJS DevContainer
+:source-highlighter: coderay
+
+== TL;DR
+Container based nodeJS development. Ships with https://www.postgresql.org[postgreSQL DB] and https://github.com/wodby/adminer[adminer].
+VSC setup contains some plugins and settings in link:./.devcontainer/devcontainer.json[devcontainer.json]
+
+== How 2 use
+First of all we need to add you sourcecode to the container setup.   
+Diffent ways:
+1. Copy the source code to this projects root folder
+2. Setup the path to your sourcecode in `.env`.
+[source,%linenums,text,highlight=10]
+include::./.devcontainer/.env[]
+
+
+== Components
+=== PostgreSQL
+Current values for redentials, db name and external db port can be set in link:./.devcontainer/.env[.env]
+link:./.devcontainer/devcontainer.json[devcontainer.json].
+They're applied in link:./.devcontainer/docker-compose.yaml[docker-compose.yaml].
+
+=== Adminer
+Adminer is configures in link:./.devcontainer/docker-compose.yaml[docker-compose.yaml] as well.
+
+
+== Application Links
+* http://localhost:8810/?pgsql=db&username=postgres&db=genericDB&ns=public[Show public schema]

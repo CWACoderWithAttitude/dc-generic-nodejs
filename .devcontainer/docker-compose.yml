@@ -1,0 +1,47 @@
+version: "3.7"
+
+services:
+  dc-generic-nodejs:
+    container_name: dc-generic-nodejs
+    hostname: dc-generic-nodejs.local
+    environment:
+      - VAR1=${VAR1_FROM_DOT_ENV}
+      - VAR2=${VAR2_FROM_DOT_ENV}
+    build:
+      context: .
+    working_dir: /src
+    volumes:
+      - ..:/src:cached
+    command: >
+      bash -c "sleep infinity"
+  #   networks:
+  #      dc-generic-nodejs-net:
+  # https://geshan.com.np/blog/2021/12/docker-postgres/
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=${db_user}
+      - POSTGRES_PASSWORD=${db_password}
+      - POSTGRES_DB=${db_name}
+    ports:
+      - "${db_port}:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  adminer:
+    image: adminer:4.8.1
+    container_name: adminer
+    restart: always
+    environment:
+      - ADMINER_DEFAULT_DB_DRIVER:pgsql
+    ports:
+      - ${ADMINER_HTTP_EXTERN}:8080
+#networks:
+#  dc-generic-nodejs-net:
+# https://docs.docker.com/storage/volumes/
+
+volumes:
+  cache:
+  #  cache:
+  db_data:
+    driver: local
